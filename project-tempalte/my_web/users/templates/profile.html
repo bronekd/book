@@ -10,5 +10,17 @@
         <p><strong>Bio:</strong> {{ profile.bio }}</p>
         <p><strong>Location:</strong> {{ profile.location }}</p>
         <p><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
+
+
+        {% if profile.profile_image %}
+        <p><img src="{{ profile.profile_image.url }}" alt="Profile image" width="300"></p>
+    {% endif %}
+
+    <h2>Edit Profile</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form>
     </div>
 {% endblock content %}
