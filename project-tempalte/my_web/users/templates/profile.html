@@ -5,6 +5,10 @@
         <h1>Profile</h1>
         <br>
         <h2>{{ user.username }}</h2>
+        <h1>Profile of {{ user.username }}</h1>
         <p>{{ user.email }}</p>
+        <p><strong>Bio:</strong> {{ profile.bio }}</p>
+        <p><strong>Location:</strong> {{ profile.location }}</p>
+        <p><strong>Birth Date:</strong> {{ profile.birth_date }}</p>
     </div>
 {% endblock content %}

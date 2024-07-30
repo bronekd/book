@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from .forms import UserRegisterForm
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.models import User
+from .models import Profile
 
 def register(request):
     if request.method == 'POST':
@@ -16,7 +17,15 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'register.html', {'form': form})
 
-
+"""
 @login_required
 def profile(request):
     return render(request, 'profile.html')
+"""
+@login_required
+def profile(request):
+    return render(request, 'profile.html')
+    username = request.user.username
+    user = get_object_or_404(User, username=username)
+    profile = get_object_or_404(Profile, user=user)
+    return render(request, 'profile.html', {'user': user, 'profile': profile})
