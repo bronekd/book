@@ -1,0 +1,24 @@
+{% extends "master.html" %}
+
+{% block title %}
+  BookList
+{% endblock %}
+
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Search</button>
+    </form>
+
+<h1>Book List</h1>
+<a href="{% url 'add_book' %}">Add New Book</a>
+<ul>
+    {% for book in object_list %}
+    <li>
+        <a href="">{{ book.title }}</a> by {{ book.author }}
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
