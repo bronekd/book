@@ -35,3 +35,5 @@ def profile(request):
         form = ProfileForm(instance=profile)
 
     return render(request, 'profile.html', {'user': user, 'profile': profile, 'form': form})
+
+
